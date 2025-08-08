@@ -8,6 +8,10 @@ const TicTacToe_Custom = () => {
 
   const [state, setState] = useState([]);
   const [turn, setTurn] = useState(true);
+
+  console.log(val);
+  console.log(matrixSize);
+  console.log(state);
   //_________________INPUT____________________________________
   function changeVal() {
     const size = parseInt(val);
@@ -82,27 +86,68 @@ const TicTacToe_Custom = () => {
   }
 
   return (
-    <center>
-      <h2>
-        {result === "X"
-          ? "X is the Winner"
-          : result === "O"
-          ? "O is winner"
-          : ""}
-      </h2>
-      <div className="">
-        <input
-          className="b-1 m-5 bg-gray-300"
-          placeholder="Please enter the size"
-          onChange={(e) => {
-            setval(e.target.value);
-          }}
-          type="number"
-        />
-        <button onClick={changeVal}>add</button>
+    <center className="grid grid-row place-content-center mt-10">
+      <div className="flex justify-center h-15 w-70 text-2xl font-bold  my-2">
+        <h2>
+          {result === "O" || result === "X" ? (
+            <div className="flex items-center justify-center">
+              <p className={result === "O" ? "text-blue-500" : "text-red-500"}>
+                The Winner is {result === "O" ? "O" : "X"}
+              </p>
+              <button
+                onClick={() => {
+                  setMatrixSize(""), setState([]);
+                }}
+                className="m-2 px-2 border-2 border-red-500 text-xl text-white rounded-lg bg-red-400 hover:bg-transparent hover:text-red-400 hover:border-red-400 "
+              >
+                Back
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-3 place-content-center items-center -translate-x-3 ">
+              <input
+                className="col-span-1 border-1 border-red-500 px-1 rounded-lg text-white m-5 bg-transparent"
+                onChange={(e) => {
+                  setval(e.target.value);
+                }}
+                type="number"
+              />
+              <button
+                className="col-span-2 h-9 px-2 border-2 border-red-500 text-xl text-white rounded-lg bg-red-400 hover:bg-transparent hover:text-red-400 hover:border-red-400 "
+                onClick={changeVal}
+              >
+                add
+              </button>
+            </div>
+          )}
+        </h2>
+        {/* <h2>
+          {result === "X" ? (
+            <h1 className="text-red-500"> X is the Winner</h1>
+          ) : result === "O" ? (
+            <h1 className="text-blue-500"> O is the Winner</h1>
+          ) : (
+            <div className="grid grid-cols-3 place-content-center items-center -translate-x-3 ">
+              <input
+                className="col-span-1 border-1 border-red-500 px-1 rounded-lg text-white m-5 bg-transparent"
+                onChange={(e) => {
+                  setval(e.target.value);
+                }}
+                type="number"
+              />
+              <button
+                className="col-span-2 h-9 px-2 border-2 border-red-500 text-xl text-white rounded-lg bg-red-400 hover:bg-transparent hover:text-red-400 hover:border-red-400 "
+                onClick={changeVal}
+              >
+                add
+              </button>
+            </div>
+          )}
+        </h2> */}
       </div>
+
       <table>
-        <tbody className="">
+        <tbody>
           {matrix.map((row, rowIndex) => (
             <tr className="p-2  h-20 w-20 " key={rowIndex}>
               {row.map((cell, cellIndex) => (
