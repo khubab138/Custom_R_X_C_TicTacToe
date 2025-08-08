@@ -1,6 +1,6 @@
 {
   "name": "tictactoe",
-    "homepage": "https://khubab138.github.io/Custom_R_X_C_TicTacToe",
+    "homepage": "https://khubab138.github.io/Custom_R_X_C_TicTacToe/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+  "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
